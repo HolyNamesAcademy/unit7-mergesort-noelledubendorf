@@ -74,9 +74,32 @@ public class Main {
         ArrayList<Integer> n = new ArrayList<Integer>();
         int left = lo;
         int right = mid;
-        while (left < mid && right <= hi)
+        while (left < mid || right < hi)
         {
-             
+            if(right == hi)
+            {
+                n.add(arrayList.get(left));
+                left++;
+            }
+            else if (left == mid)
+            {
+                n.add(arrayList.get(right));
+                right++;
+            }
+            else if (arrayList.get(right) < arrayList.get(left))
+            {
+                n.add(arrayList.get(right));
+                right++;
+            }
+            else
+            {
+                n.add(arrayList.get(left));
+                left++; 
+            }
+        }
+        for (int i = 0; i < n.size(); i++)
+        {
+            arrayList.set(i + lo, n.get(i));
         }
     }
 }
